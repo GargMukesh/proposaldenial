@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Multi-checkbox Form</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .checkbox-group, .feedback-group {
+      margin-bottom: 15px;
+    }
+    .feedback-container, .add-skill-container {
+      display: none;
+    }
+    .remove-skill-btn {
+      margin-top: 10px;
+    }
+    .searchable-dropdown {
+      position: relative;
+    }
+    .searchable-dropdown .dropdown-menu {
+      display: none;
+      position: absolute;
+      width: 100%;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+      z-index: 1000;
+    }
+    .searchable-dropdown .dropdown-menu.show {
+      display: block;
+    }
+    .searchable-dropdown .dropdown-item {
+      cursor: pointer;
+    }
+    .searchable-dropdown .dropdown-item:hover {
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2>Feedback Form</h2>
+
+    <!-- Current Proposal Feedback Section -->
+    <div id="current-proposal-feedback" class="mb-5">
+      <h4>Current Proposal Feedback</h4>
+      <div class="form-group checkbox-container">
+        <!-- Current proposal feedback checkboxes will be inserted here -->
+      </div>
+      <div class="form-group feedback-container">
+        <!-- Feedback fields for must-have skills will be inserted here -->
+      </div>
+      <div class="form-group searchable-dropdown add-skill-container">
+        <label>Add Skill:</label>
+        <input type="text" class="form-control skill-search" placeholder="Search skill...">
+        <div class="dropdown-menu skill-dropdown">
+          <!-- Skill options will be dynamically inserted here -->
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Comment:</label>
+        <textarea class="form-control comment-field" rows="3" placeholder="Enter your comment..."></textarea>
+      </div>
+    </div>
+
+    <!-- Other Booked Colleagues Section -->
+    <div id="other-booked-colleagues" class="mb-5">
+      <!-- Sections for each colleague will be dynamically inserted here -->
+    </div>
+
+    <button id="submit-all" class="btn btn-primary mt-3">Submit All</button>
+
+    <div class="mt-5">
+      <h4>JSON Response:</h4>
+      <pre id="json-response"></pre>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="script2.js"></script>
+</body>
+</html>

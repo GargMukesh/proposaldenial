@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TAPG-Proposal</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <style>
+        #commentHelp {
+            margin-top: 20px;
+        }
+
+        /* Add some additional styling if needed */
+        .feedback-container {
+            margin-top: 20px;
+            display: none;
+            /* Initially hide the feedback container */
+        }
+
+        .booking-item {
+            margin-bottom: 15px;
+        }
+        .searchable-dropdown {
+      position: relative;
+    }
+    .searchable-dropdown .dropdown-menu {
+      display: none;
+      position: absolute;
+      width: 100%;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+      z-index: 1000;
+    }
+    .searchable-dropdown .dropdown-menu.show {
+      display: block;
+    }
+    .searchable-dropdown .dropdown-item {
+      cursor: pointer;
+    }
+    .searchable-dropdown .dropdown-item:hover {
+      background-color: #f8f9fa;
+    }
+    </style>
+
+
+</head>
+
+<body id="body">
+
+    <!-- place a loader  -->
+
+
+    <div id="spinner">
+        <div class="col text-center" style="margin: 0; position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);
+                                transform: translate(-50%, -50%);">
+            <div class="spinner-border text-primary" style="width: 5rem; height: 5rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-none" style=" margin-top: 20px;font-family: 'Slabo 27px', serif; ">
+        <div class="row justify-content-centre">
+            <div class="col ">
+                <h3 class="text-left">
+                    Proposal for <span id="clientName"></span> - <span id="project"></span>, demand #<span
+                        id="demandId"></span>
+                </h3>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Dear <span id="pocName"></span>,
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <p> We are proposing <Span id="resourceName"></Span>, for demand #<span id="demandId1"></span>, demand
+                    genus:
+                    <span id="genus"></span>.
+                    We kindly ask you to have a dialog with the proposed colleague and register your response as early
+                    as
+                    possible.
+                </p>
+                <p>If you register a proposal acceptance response, then the proposed colleague will have the option to
+                    decline
+                    the proposal.
+                    Therefore, we highly recommend that you use the dialog effectively to discuss the role,
+                    responsibilities,
+                    and project challenges in detail.
+                </p>
+
+                <p>This colleague might also be proposed to other project(s) simultaneously.
+                    The first project to confirm the colleague will move ahead with the process, while the other
+                    proposal(s), if
+                    any, will be closed.
+                </p>
+
+                <p>
+                    Please respond to the proposals within 15 working days from receiving the first one, as the proposals will expire and the corresponding demand will be closed if there is no response within this timeframe.
+                </p>
+                <p>
+                    If you choose the 'Book' option then you can book a colleague for a minimum of 3 working days and maximum of 30 working days; the corresponding cost will be associated with the project. 
+                </p>
+                <Span id="resourceFirstName"></Span> contact details: <br>
+				Email: <span id="resourceEmail"></span>. <br>
+				Phone number: <span id="resourcePhoneNumber"></span>.<br>
+                Available from: <span id="availableFromDate"></span>.
+                <br><br>
+                Additional Information: <Span id="additionalInfoForProject"></Span>
+                <br><br>
+                Please select an option from below as per your decision.
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col">
+                <div class="form-group">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="book" name="acceptreject" value="Book" />
+                        <label class="custom-control-label" for="book">Book</label>
+                    </div>
+                    <!-- Default inline 1-->
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="accept" name="acceptreject"
+                            value="Accept" />
+                        <label class="custom-control-label" for="accept">Accept </label>
+                    </div>
+
+                    <!-- Default inline 2-->
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="reject" name="acceptreject"
+                            value="Reject" />
+                        <label class="custom-control-label" for="reject">Decline</label>
+                    </div>
+
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="denied" name="acceptreject"
+                            value="Denied" />
+                        <label class="custom-control-label" for="denied">Accepted but colleague not willing</label>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+   <!-- Current Proposal Feedback Section -->
+    <div id="current-proposal-denial-feedback-container" class="mb-5" style="display: none;">
+        <p>Please provide denial reason(s)</p>
+        <div class="form-group denial-reasons-checkbox-container">
+            <!-- Current proposal feedback checkboxes will be inserted here -->
+        </div>
+        <div class="form-group must-have-feedback-container">
+            <!-- Feedback fields for must-have skills will be inserted here -->
+        </div>
+        <div class="form-group searchable-dropdown add-skill-container" style="display: none;">
+            <label>Add Skill:</label>
+            <input type="text" class="form-control skill-search" placeholder="Search skill...">
+            <div class="dropdown-menu skill-dropdown">
+                <!-- Skill options will be dynamically inserted here -->
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Comment:</label>
+            <textarea class="form-control comment-field" rows="3" placeholder="Enter your comment..."></textarea>
+        </div>
+    </div>
+
+        <div class="row d-none comment">
+            <div class="col-10 ">
+                <div class="form-group">
+                    <div>
+                        <label for="exampleInputEmail1">Comment</label><label class="text-danger text-strong">*</label>
+                    </div>
+                    <div>
+                        <textarea class="form-control" id="comment" aria-describedby="commentHelp"></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                        <small id="commentHelp" class="font-weight-bold text-danger h6">The feedback given here will be
+                            shared verbatim with the person. Constructive feedback always helps in improvement.
+                        </small>
+                        <label>(Minimum 80 characters)</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row d-none accept-info-message">
+            <div class="col-10 ">
+                <div class="form-group">
+                    <div class="mt-2">
+                        <small id="accept-info-message" class="font-weight-bold text-danger h6">All the other proposal(s) on the demand will be closed and colleague(s) will be available for TAP planning.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-2 d-none bookDaysDropDown">
+
+            <div class="col-10 cba-colleague-message">
+                <div class="form-group">
+                    <div>
+                        <small id="cba-colleague-message" class="font-weight-bold text-danger h6">Please note that the proposed colleague is currently allocated to other project(s) and may not be able to dedicate time, during the booking period, for the proposed project; the corresponding booking period won't be charged from the proposed project.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group" id="bookDaysDropDownGroup">
+                    <div>
+                        <label for="bookDaysSelect">Book for (number of working days)</label>
+                        <label class="text-danger text-strong">*</label>
+                    </div>
+                    <div>
+                        <select class="form-control" id="bookDaysSelect" required>
+                            <option value="" selected disabled>Select an option</option>
+                            <!-- Options will be added using JavaScript -->
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-10">
+                <!-- JavaScript will populate this div with the data -->
+                <div class="feedback-container">
+                    <p>Please provide the feedback(s) for other <b>booked</b> colleague(s):<label class="text-danger text-strong">*</label></p>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="row  d-none alertMessage">
+            <div class="col-8">
+                <div class="alert alert-danger errorMessage" id="errorMessage" role="alert">
+                    Require 80 characters to submit response.
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button id="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        var model = {
+
+                proposal: {
+                    messageHeading: '',
+                    messageBody: '',
+                    country: '',
+                    clientName: '',
+                    demandId: '',
+                    goodToHave: '',
+                    jobDescription: '',
+                    linkValidity: '',
+                    mustHaveSkills: '',
+                    pocEmail: '',
+                    pocName: '',
+                    project: '',
+                    requestStartDate: '',
+                    resourceEmail: '',
+                    resourceName: '',
+                    additionalInfoForProject: '',
+                    resourcePersonNumber: '',
+                    resourcePhoneNumber: '',
+                    remark: '',
+                    resourceAvailableDate: '',
+                    skillDelta: '',
+                    noTechnicalInterview: '',
+                    workLocation: '',
+                    time: '',
+                    genus: '',
+                    bookedProposals: [
+                        {
+                            "proposalId": 123,
+                            "Colleague Name": "Mukesh",
+                            "Colleague Email": "mukesh@gmail.com"
+                        },
+                        {
+                            "proposalId": 1234,
+                            "Colleague Name": "Dukesh",
+                            "Colleague Email": "dukesh@gmail.com"
+                        }
+                    ],
+                    hasBookedProposals: true,
+                    proposalDenialReasonsMaster: [
+                        "Skill(s) not matching",
+                        "Colleague not reachable",
+                        "Colleague involved in other project",
+                        "Colleague constraint(s)",
+                        "Legal constraint(s)",
+                        "Demand not valid",
+                        "Another colleague selected"
+                    ],
+                    demandMustHaveSkills: ['Java', 'Angular', 'Azure'],
+                    skillsFeedbacksMaster: ["Good Enough", "Not Enough", "Not Tested", "Super", "Trainable"],
+                    skillsMaster: [
+                        {
+                            "bK_SkillCode": 61493,
+                            "skillName_Level2": "2D",
+                            "skillName_Level3": "Any Other Skill"
+                        },
+                        {
+                            "bK_SkillCode": 61491,
+                            "skillName_Level2": "2D",
+                            "skillName_Level3": "Motion graphics"
+                        },
+                        {
+                            "bK_SkillCode": 61491,
+                            "skillName_Level2": "2D",
+                            "skillName_Level3": "Skill1"
+                        },
+                        {
+                            "bK_SkillCode": 61491,
+                            "skillName_Level2": "2D",
+                            "skillName_Level3": "Skill2"
+                        }
+                    ]
+                },
+                comment: '',
+                bookDays: '',
+                userProposalResponse: 'Accept',
+                bookedProposalsFeedback: [],
+                isCommentValid: 'false',
+                workFlowId: "08584769441259068720059550882CU21",
+                workflowURL: 'https://prod-24.centralindia.logic.azure.com:443/workflows/b3f21d7bbb5e4511bd27e0542ac107df/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BocBDQTnr-ahtwemTCOzlctsZ4pbgNHEpLXM28_skI8&workflowid=',
+                responseListenURL: '',
+                calculateAllowedBookDaysWorkflowURL: ""
+            }
+
+
+
+        var controller = {
+            int: function () {
+                this.getData();
+                // proposalDetailsView.init()
+            },
+
+            getData: function () {
+                $.get(model.workflowURL + model.workFlowId)
+                    .done(function (data) {
+                         console.log(data)
+                        if (data) {
+                            model.proposal.messageHeading = data.MessageHeading;
+                            model.proposal.messageBody = data.MessageBody;
+                            model.proposal.country = data.Country;
+                            model.proposal.clientName = data.Client_Name;
+                            model.proposal.demandId = data.Demand_ID;
+                            model.proposal.goodToHave = data.Good_to_have;
+                            model.proposal.jobDescription = data.JD;
+                            model.proposal.linkValidity = data.LinkValidity;
+                            model.proposal.mustHaveSkills = data.Must_have;
+                            model.proposal.pocEmail = data.POC_Email;
+                            model.proposal.pocName = data.POC_Name;
+                            model.proposal.project = data.Project_Name;
+                            model.proposal.requestStartDate = data.Requested_Start_Date;
+                            model.proposal.resourceEmail = data.Resource_Email;
+                            model.proposal.resourceName = data.Resource_Name;
+                            model.proposal.additionalInfoForProject = data.AdditionalInfoForProject;
+                            model.proposal.resourcePersonNumber = data.Resource_Person_Number;
+                            model.proposal.remark = data.Remark;
+
+                            model.proposal.resourceAvailableDate = data.Resource_Available_Date;
+                            model.proposal.resourcePhoneNumber = data.Resource_Phone_Number;
+                            model.proposal.skillDelta = data.Skill_Delta;
+                            model.proposal.noTechnicalInterview = data.No_Technical_Interview;
+                            model.proposal.workLocation = data.Work_location;
+                            model.proposal.time = data.Time;
+                            model.proposal.genus = data.Genus;
+                            model.proposal.bookedProposals = data.BookedProposals;
+                            model.proposal.hasBookedProposals = data.HasBookedProposals;
+                            model.proposal.isCBAColleague = data.IsCBAColleague;
+                            model.proposal.proposalDenialReasonsMaster = data.ProposalDenialReasonsMaster;
+                            model.proposal.skillsFeedbacksMaster = data.SkillsFeedbackMaster;
+                            model.proposal.skillsMaster = data.SkillsMaster;
+                            proposalDetailsView.init()
+                        }
+                    });
+
+                //  proposalDetailsView.init()
+            },
+
+            submitData: function () {
+
+                let response = JSON.stringify({
+                    Response: model.userProposalResponse,
+                    Comment: model.comment,
+                    BookDays: model.bookDays,
+                    BookedProposals: model.bookedProposalsFeedback
+                });
+
+                //console.log(response);
+
+                $.ajax({
+                    url: model.responseListenURL+model.workFlowId,
+                    type: "POST",
+                    data: JSON.stringify({
+                        workFlowId: model.workFlowId,
+                        UserResponse: response
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function () {
+                        $("#body").html('Your response has been collected!');
+                    },
+                    error: function () {
+                        // console.log('error occured');
+                        window.location.reload();
+                    }
+                });
+
+            },
+
+            getProposal: function () {
+                return model.proposal;
+            },
+
+            setComment: function (comment) {
+                model.comment = comment;
+            },
+
+            getComment: function () {
+                return model.comment;
+            },
+
+            setBookDays: function (bookDays) {
+                model.bookDays = bookDays;
+            },
+
+            getBookDays: function () {
+                return model.bookDays;
+            },
+
+            setUserResponse: function (userResponse) {
+                model.userProposalResponse = userResponse;
+            },
+
+            getUserResponse: function () {
+                return model.userProposalResponse;
+            },
+
+            checckCommentVisibility: function () {
+                let isVisible = false;
+                if (model.userProposalResponse === 'Denied') {
+                    isVisible = true;
+                }
+                return isVisible;
+            },
+
+            checkAcceptInfoMessageVisibility: function () {
+                let isVisible = false;
+                if (model.userProposalResponse === 'Accept') {
+                    isVisible = true;
+                }
+                return isVisible;
+            },
+
+            checkCBAColleagueInfoMessageVisibility: function () {
+                let isVisible = false;
+                if (model.proposal.isCBAColleague === true) {
+                    isVisible = true;
+                }
+                return isVisible;
+            },
+
+            removeTrailingDots: function (inputString) {
+                // Use a regular expression to match one or more dots at the end of the string
+                const regex = /\.*$/;
+
+                // Use the replace method to remove the trailing dots
+                const result = inputString.trim().replace(regex, '');
+
+                return result;
+            },
+
+            checkBookDaysDropdownVisibility: function () {
+                let isVisible = false;
+                if (model.userProposalResponse === 'Book') {
+                    isVisible = true;
+                }
+                return isVisible;
+            },
+
+            checkDenialFeedbackContainerVisibility: function () {
+                let isVisible = false;
+                if (model.userProposalResponse === 'Reject') {
+                    isVisible = true;
+                }
+                return isVisible;
+            },
+
+            checkCommentValidity: function () {
+
+                let isValid = false;
+                let commentLength = model.comment.replaceAll(" ", "").length;
+                if (commentLength >= 80) {
+                    isValid = true;
+                }
+                return isValid;
+            },
+
+            checkBookDaysValidity: async function () {
+                let isValid = false;
+                let errorMessage = '';
+                let bookDays = model.bookDays
+                try {
+
+                    if (!bookDays) {
+                        isValid = false,
+                            errorMessage = "Please select no. of book days."
+                    }
+                    else {
+                        const req = {
+                            "DemandId": model.proposal.demandId,
+                            "ColleagueAvailabilityDate": model.proposal.resourceAvailableDate,
+                            "POCEmail": model.proposal.pocEmail,
+							"ColleaguePersonNumber":model.proposal.resourcePersonNumber
+                        }
+                        // console.log(req);
+                        const response = await fetch(model.calculateAllowedBookDaysWorkflowURL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+
+                            body: JSON.stringify(req),
+                        });
+                       const maxAllowedDaysRes = await response.json();
+                        const maxAllowedDays = maxAllowedDaysRes.AllowedBookDays;
+                        const bookDaysErrorMessage = maxAllowedDaysRes.BookDaysErrorMessage;
+                        console.log('book days allowed' + maxAllowedDays);
+                        if (maxAllowedDays < 3) {
+                            isValid = false;
+                            errorMessage = bookDaysErrorMessage;
+                        }
+                        else if (bookDays <= maxAllowedDays) {
+                            isValid = true
+
+                        }
+                        else {
+                            isValid = false;
+                            errorMessage = bookDaysErrorMessage;
+                        }
+                    }
+
+                } catch (error) {
+                    console.error("Error while validating: ", error);
+                    isValid = false;
+                    errorMessage = "An error occurred while validating. Please try again later.";
+                }
+                return {
+                    isValid: isValid,
+                    errorMessage: errorMessage
+                };
+            },
+
+            checkSubmitButtonVisibility: function () {
+                let isVisible = false
+                let isValidComment = false;
+                let userResponse = model.userProposalResponse;
+                if (userResponse === 'Accept') {
+                    isVisible = true;
+                }
+                else {
+                    isValidComment = this.checkCommentValidity();
+                    if (isValidComment) {
+                        isVisible = true;
+                    }
+                }
+                return isVisible;
+            },
+
+            getBookedProposals: function () {
+                return model.proposal.bookedProposals;
+            },
+            hasBookedProposals: function () {
+                return model.proposal.hasBookedProposals;
+            },
+            setBookedProposalsFeedback: function (bookedProposalsFeedback) {
+                model.bookedProposalsFeedback = bookedProposalsFeedback;
+            },
+
+            getProposalDenialReasonsMaster: function(){
+                return model.proposal.proposalDenialReasonsMaster;
+            },
+            getDemandMustHaveSkills: function(){
+                return model.proposal.demandMustHaveSkills;
+            },
+            getSkillFeedbackMaster: function(){
+                return model.proposal.skillsFeedbacksMaster;
+            },
+            getskillsMaster: function(){
+                return model.proposal.skillsMaster;
+            }
+
+
+
+        }
+
+
+        var proposalDetailsView = {
+
+            init: function () {
+
+                this.clientNameEle = document.getElementById('clientName');
+                this.demandIdEle = document.getElementById('demandId');
+                this.projectEle = document.getElementById('project');
+                this.pocNameEle = document.getElementById('pocName');
+                this.demandIdEle1 = document.getElementById('demandId1');
+
+                this.resourceNameEle = document.getElementById('resourceName');
+                this.resourceFirstNameEle = document.getElementById('resourceFirstName');
+                this.additionalInfoForProjectEle = document.getElementById('additionalInfoForProject');
+                this.resourceEmailEle = document.getElementById('resourceEmail');
+                this.resourcePhoneNumberEle = document.getElementById('resourcePhoneNumber');
+                this.availableFromDateEle = document.getElementById('availableFromDate');
+                this.jobDescriptionEle = document.getElementById('jobDescription');
+                this.timeEle = document.getElementById('time');
+                this.genusEle = document.getElementById('genus');
+
+
+                this.submitEle = document.getElementById('submit');
+                this.commentEle = document.getElementById('comment');
+
+                this.bookDaysSelect = document.getElementById("bookDaysSelect");
+                this.errorMessageEle = document.getElementById('errorMessage');
+
+                this.currentProposalFeedbackEle = $('#current-proposal-denial-feedback-container');
+                // const $otherBookedColleagues = $('#other-booked-colleagues');
+  
+            
+                // create dropdown
+
+                for (let i = 3; i <= 30; i++) {
+                    const option = document.createElement("option");
+                    option.value = i;
+                    option.textContent = i;
+                    this.bookDaysSelect.appendChild(option);
+                }
+
+
+                this.bookDaysSelect.addEventListener("change", function () {
+                    const selectedValue = bookDaysSelect.value;
+                    controller.setBookDays(selectedValue);
+                    proposalDetailsView.hideAlertMessage();
+                });
+
+                this.radios = document.getElementsByName('acceptreject');
+                for (var i = 0; i < this.radios.length; i++) {
+                    this.radios[i].onclick = function () {
+                        controller.setUserResponse(this.value);
+                        proposalDetailsView.toggleFeedbackContainer();
+                        proposalDetailsView.toggleComment(controller.checckCommentVisibility());
+                        proposalDetailsView.toggleAcceptInfoMessage(controller.checkAcceptInfoMessageVisibility());
+                        proposalDetailsView.toggleBookDaysDropdown(controller.checkBookDaysDropdownVisibility());
+                        proposalDetailsView.toggleCBAColleagueInfoMessage((controller.checkBookDaysDropdownVisibility() && controller.checkCBAColleagueInfoMessageVisibility()));
+                        proposalDetailsView.hideAlertMessage();
+                        proposalDetailsView.toggleDenialFeedbackContainer(controller.checkDenialFeedbackContainerVisibility())
+                    }
+                }
+
+
+                this.commentEle.addEventListener('keyup', () => {
+                    let comment = this.commentEle.value;
+                    // console.log("comment " + comment);
+                    controller.setComment(comment);
+                    let isCommentValid = controller.checkCommentValidity();
+                    // console.log("comment validity " + controller.checkCommentValidity())
+                })
+
+
+
+                this.submitEle.addEventListener('click', () => {
+                    //disable button
+                    $('#submit').prop('disabled', true)
+                    if (((controller.getUserResponse() === "Reject") || ((controller.getUserResponse() === "Denied")) && controller.hasBookedProposals() === false)) {
+                        this.updateAlertMessage('Require 80 characters to submit response.');
+                        this.toggleAlert(controller.checkCommentValidity());
+                        //enable button
+                        if (!controller.checkCommentValidity()) {
+                            $('#submit').prop('disabled', false)
+                        }
+                        if (controller.checkCommentValidity()) {
+                            let comment = controller.removeTrailingDots(controller.getComment())
+                            controller.setComment(comment);
+                            controller.submitData();
+                        }
+                    }
+                    if (controller.getUserResponse() === "Book") {
+                        controller.checkBookDaysValidity().then(res => {
+                            if (!res.isValid) {
+                                this.updateAlertMessage(res.errorMessage);
+                                this.toggleAlert(res.isValid);
+                                //enable button
+                                if (!controller.checkCommentValidity()) {
+                                    $('#submit').prop('disabled', false)
+                                }
+                            }
+                            if (res.isValid) {
+                                controller.submitData();
+                            }
+                        });
+
+
+                    }
+                    if (controller.getUserResponse() === "Accept" && controller.hasBookedProposals() === false) {
+
+                        controller.submitData();
+                    }
+
+                    //Accept with booked proposals
+                    if (controller.getUserResponse() === "Accept" && controller.hasBookedProposals() === true) {
+
+                        var feedbackData = [];
+                        var feedbackTextAreas = document.querySelectorAll('.feedback-container textarea');
+                        // Check if any feedback is not provided
+                        var feedbackNotProvided = Array.from(feedbackTextAreas).some(function (textarea) {
+                            return textarea.value.trim() === '';
+                        });
+
+                        if (feedbackNotProvided) {
+                            this.updateAlertMessage('Require feedback of other booked colleague(s) to submit response.');
+                            this.showAlertMessage(feedbackNotProvided);
+                            $('#submit').prop('disabled', false)
+                        }
+                        else {
+                            feedbackTextAreas.forEach(function (textarea) {
+                                var bookingId = textarea.id.split('-')[1];
+                                var feedback = textarea.value;
+                                feedbackData.push({ bookingId: bookingId, feedback: feedback, demandId: controller.getProposal().demandId });
+                            });
+                            controller.setBookedProposalsFeedback(feedbackData);
+                            controller.submitData();
+                        }
+                    }
+
+                    //Denied with booked proposals
+                    if (controller.getUserResponse() === "Denied" && controller.hasBookedProposals() === true) {
+                      
+                        var feedbackData = [];
+                        var feedbackTextAreas = document.querySelectorAll('.feedback-container textarea');
+                        // Check if any feedback is not provided
+                        var feedbackNotProvided = Array.from(feedbackTextAreas).some(function (textarea) {
+                            return textarea.value.trim() === '';
+                        });
+
+                        //check for incomplete input
+                        if(controller.checkCommentValidity() === false || feedbackNotProvided ){
+                            this.updateAlertMessage('Require 80 characters in the comment field and feedback of other booked colleague(s) to submit response.');
+                            this.showAlertMessage(true);
+                            $('#submit').prop('disabled', false)
+                        }
+                        else {
+                            feedbackTextAreas.forEach(function (textarea) {
+                                var bookingId = textarea.id.split('-')[1];
+                                var feedback = textarea.value;
+                                feedbackData.push({ bookingId: bookingId, feedback: feedback, demandId: controller.getProposal().demandId });
+                            });
+                            controller.setBookedProposalsFeedback(feedbackData);
+                            let comment = controller.removeTrailingDots(controller.getComment())
+                            controller.setComment(comment);
+                            controller.submitData();
+                        }
+                    }
+                })
+                
+                   // Show feedback fields and add skill section for current proposal feedback
+                this.currentProposalFeedbackEle.find('.denial-reasons-checkbox-container').on('change', 'input[type="checkbox"]', function () {
+                    console.log('Inside denial reason check')
+                    if ($(this).val() === "Skill(s) not matching" && $(this).is(':checked')) {
+                        proposalDetailsView.renderFeedbackFields(proposalDetailsView.currentProposalFeedbackEle.find('.must-have-feedback-container'));
+                        proposalDetailsView.currentProposalFeedbackEle.find('.must-have-feedback-container').show();
+                        proposalDetailsView.currentProposalFeedbackEle.find('.add-skill-container').show();
+                    } else {
+                        const isSkillNotMatchingSelected = proposalDetailsView.currentProposalFeedbackEle.find('.denial-reasons-checkbox-container input[type="checkbox"][value="Skill(s) not matching"]').is(':checked');
+                        if (!isSkillNotMatchingSelected) {
+                            proposalDetailsView.currentProposalFeedbackEle.find('.must-have-feedback-container').hide();
+                            proposalDetailsView.currentProposalFeedbackEle.find('.must-have-feedback-container').empty();
+                            proposalDetailsView.currentProposalFeedbackEle.find('.add-skill-container').hide();
+                        }
+                    }
+                });
+
+                    // Populate current proposal feedback skill dropdown
+                proposalDetailsView.populateSkillDropdown(proposalDetailsView.currentProposalFeedbackEle.find('.skill-dropdown'),controller.getskillsMaster());
+
+                proposalDetailsView.currentProposalFeedbackEle.find('.skill-search').on('input', function () {
+                    const searchTerm = $(this).val().toLowerCase();
+                    const skillsMaster = controller.getskillsMaster();
+                    const filteredSkills = skillsMaster.filter(skill =>
+                        skill.SkillName_Level3.toLowerCase().includes(searchTerm)
+                    );
+                    proposalDetailsView.populateSkillDropdown(proposalDetailsView.currentProposalFeedbackEle.find('.skill-dropdown'), filteredSkills);
+                    proposalDetailsView.currentProposalFeedbackEle.find('.skill-dropdown').addClass('show');
+                });
+
+                this.render();
+
+            },
+
+            render: function () {
+                let currentProposal = controller.getProposal();
+
+                this.clientNameEle.textContent = currentProposal.clientName;
+                this.demandIdEle.textContent = currentProposal.demandId;
+                this.projectEle.textContent = currentProposal.project;
+                this.pocNameEle.textContent = currentProposal.pocName.split(' ')[0];
+                this.demandIdEle1.textContent = currentProposal.demandId;
+
+                this.resourceNameEle.textContent = currentProposal.resourceName;
+                this.resourceFirstNameEle.textContent = currentProposal.resourceName.split(' ')[0];
+                this.additionalInfoForProjectEle.textContent = currentProposal.additionalInfoForProject;
+                this.resourceEmailEle.textContent = currentProposal.resourceEmail;
+                this.resourcePhoneNumberEle.textContent = currentProposal.resourcePhoneNumber;
+                this.availableFromDateEle.textContent = currentProposal.resourceAvailableDate;
+                //this.jobDescriptionEle.textContent = currentProposal.jobDescription;
+                //this.timeEle.textContent = currentProposal.time;
+                this.genusEle.textContent = currentProposal.genus;
+                $('#spinner').addClass("d-none");
+                $('.container').removeClass("d-none");
+                this.displayFeedbackSection();
+                this.displayProposalDenialReasonsCheckbox();
+            },
+
+            // Populate current proposal denail reasons checkboxes
+            displayProposalDenialReasonsCheckbox: function () {
+                const proposalDenialReasonsMaster = controller.getProposalDenialReasonsMaster();
+                proposalDenialReasonsMaster.forEach(reason => {
+                    const checkboxGroup = $('<div class="form-check checkbox-group"></div>');
+                    const checkbox = $(`<input class="form-check-input" type="checkbox" value="${reason.Value}" required>`);
+                    const label = $(`<label class="form-check-label">${reason.Value}</label>`);
+                    checkboxGroup.append(checkbox).append(label);
+                    this.currentProposalFeedbackEle.find('.denial-reasons-checkbox-container').append(checkboxGroup);
+                });
+            },
+                
+                        // Populate skill dropdown
+                         populateSkillDropdown: function(domEle, skills = controller.getskillsMaster()) {
+                        domEle.empty();
+                        skills.forEach(skill => {
+                        const item = $(`<a class="dropdown-item" href="#">${skill.SkillName_Level3}</a>`);
+                        item.data('value', skill.SkillName_Level3);
+                        domEle.append(item);
+                    });
+    },
+
+
+            displayFeedbackSection: function () {
+                var container = document.querySelector('.feedback-container');
+
+                // Loop through the booking data and create HTML for each item
+                let bookingData = controller.getBookedProposals();
+                bookingData.forEach(function (booking) {
+                    var bookingHtml = `
+                <div class="card booking-item">
+                    <div class="card-body">
+                       
+                        <p class="card-text">Colleague Name: ${booking.ResourceName}</p>
+                        <p class="card-text">Colleague Email: ${booking.ResourceEmailId}</p>
+                        <label for="feedback-${booking.BookingId}">Feedback:</label>
+                        <textarea id="feedback-${booking.BookingId}" class="form-control" rows="2"></textarea>
+                    </div>
+                </div>
+            `;
+                    container.innerHTML += bookingHtml;
+                });
+            },
+
+            toggleComment: function (show) {
+                //check if the comment box needs to be visible
+                if (show) {
+                    if ($('.comment').hasClass("d-none")) {
+                        $('.comment').removeClass("d-none");
+                    }
+
+                }
+                else {
+                    if (!($('.comment').hasClass("d-none"))) {
+                        $('.comment').addClass("d-none");
+                    }
+                }
+            },
+
+            toggleAcceptInfoMessage: function (show) {
+                //check if the comment box needs to be visible
+                if (show) {
+                    if ($('.accept-info-message').hasClass("d-none")) {
+                        $('.accept-info-message').removeClass("d-none");
+                    }
+
+                }
+                else {
+                    if (!($('.accept-info-message').hasClass("d-none"))) {
+                        $('.accept-info-message').addClass("d-none");
+                    }
+                }
+            },
+
+            toggleCBAColleagueInfoMessage: function (show) {
+                //check if the comment box needs to be visible
+                if (show) {
+                    if ($('.cba-colleague-message').hasClass("d-none")) {
+                        $('.cba-colleague-message').removeClass("d-none");
+                    }
+
+                }
+                else {
+                    if (!($('.cba-colleague-message').hasClass("d-none"))) {
+                        $('.cba-colleague-message').addClass("d-none");
+                    }
+                }
+            },
+
+            toggleBookDaysDropdown: function (show) {
+                //check if the comment box needs to be visible
+                if (show) {
+                    if ($('.bookDaysDropDown').hasClass("d-none")) {
+                        $('.bookDaysDropDown').removeClass("d-none");
+                    }
+
+                }
+                else {
+                    if (!($('.bookDaysDropDown').hasClass("d-none"))) {
+                        $('.bookDaysDropDown').addClass("d-none");
+                    }
+                }
+            },
+
+            toggleAlert: function (commentValidity) {
+                if (commentValidity) {
+                    if (!($(".alertMessage").hasClass("d-none"))) {
+                        $('.alertMessage').addClass('d-none')
+                    }
+                }
+                else {
+                    if ($(".alertMessage").hasClass("d-none")) {
+                        $('.alertMessage').removeClass('d-none')
+                    }
+                }
+            },
+
+            updateAlertMessage: function (message) {
+                $('#errorMessage').text(message);
+
+            },
+
+            hideAlertMessage: function () {
+                if (!($(".alertMessage").hasClass("d-none"))) {
+                    $('.alertMessage').addClass('d-none')
+                }
+
+            },
+
+            showAlertMessage: function () {
+                if ($(".alertMessage").hasClass("d-none")) {
+                    $('.alertMessage').removeClass('d-none')
+                }
+            },
+
+            // Function to show/hide the feedback container based on user selection
+            toggleFeedbackContainer: function () {
+                var feedbackContainer = document.querySelector('.feedback-container');
+                //var feedbackOption = document.querySelector('input[name="feedbackOption"]:checked');
+                let userResponse = controller.getUserResponse()
+                // console.log(userResponse);
+                if (userResponse && (userResponse === 'Accept' || userResponse === 'Denied') && controller.hasBookedProposals()) {
+                    feedbackContainer.style.display = 'block';
+                } else {
+                    feedbackContainer.style.display = 'none';
+                }
+            },
+            toggleDenialFeedbackContainer: function(show){
+                if(show === true){
+                    $('#current-proposal-denial-feedback-container').show();
+                }
+                else{
+                    $('#current-proposal-denial-feedback-container').hide();
+                }
+            },
+            createFeedbackGroup: function (skill) {
+                    const feedbackGroup = $('<div class="feedback-group"></div>');
+                    const label = $(`<label>${skill}</label>`);
+                    const select = $('<select class="form-control" required></select>');
+                    select.append('<option value="">Select Feedback</option>');
+                    const skillsFeedbacksMaster = controller.getSkillFeedbackMaster();
+                    skillsFeedbacksMaster.forEach(feedback => {
+                        select.append(`<option value="${feedback.SkillFeedback}">${feedback.SkillFeedback}</option>`);
+                    });
+                    feedbackGroup.append(label).append(select);
+                    return feedbackGroup;
+                },
+
+             renderFeedbackFields: function ($container) {
+                const mustHaveSkills = controller.getDemandMustHaveSkills();
+                mustHaveSkills.forEach(skill => {
+                    const feedbackGroup = proposalDetailsView.createFeedbackGroup(skill);
+                    $container.append(feedbackGroup);
+                });
+            }
+        }
+
+
+        this.controller.int();
+
+
+    </script>
+
+</body>
+
+</html>
