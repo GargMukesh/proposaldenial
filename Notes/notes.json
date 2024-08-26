@@ -1,0 +1,39 @@
+Expected Output:
+
+{
+    "workFlowId": "08584769473268998543193129683CU27",
+    "UserResponse": {
+        "Response": "",
+        "Comment": "",
+        "BookDays": "",
+        "BookedProposals": "",
+        "ProposalDenialReasons": "",
+        "ProposalDenialReasonsKey_c": "",
+        "ProposalSkillsFeedback": [
+            [
+                {skill: java, response: good, mentionedInDemand: yes
+                },
+                {skill: java, response: good, mentionedInDemand: yes
+                },
+                {skill: java, response: good, mentionedInDemand: yes
+                },
+                {skill: java, response: good, mentionedInDemand: yes
+                },
+                {skill: java, response: not good, mentionedInDemand: no
+                },
+                {skill: java, response: not good, mentionedInDemand: no
+                },
+                {skill: java, response: not good, mentionedInDemand: no
+                }
+            ]
+        ]
+    }
+}
+
+Current output in case of booked proposals
+
+{
+    "workFlowId":"7979814",
+    "UserResponse":"{"Response":"Accept","Comment":"","BookedProposals":[{"bookingId":"691","feedback":"In case no d","demandId":"671"}]}"
+}
+
